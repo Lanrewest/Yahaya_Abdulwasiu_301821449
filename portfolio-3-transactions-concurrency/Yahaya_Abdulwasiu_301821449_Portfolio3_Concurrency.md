@@ -8,9 +8,9 @@
 ---
 
 ## 1. Executive Summary
-This report documents the transaction handling and concurrency control mechanics implemented for the ArewaConnect multi-vendor e-commerce database engine. Using explicit PostgreSQL transaction controls (`BEGIN`, `COMMIT`, `SAVEPOINT`, `ROLLBACK`), row-level locking (`FOR UPDATE`), and isolation levels (`REPEATABLE READ`), the system guarantees full ACID compliance during high-concurrency ordering workflows.
+This report explains how I handled transactions and concurrency in the ArewaConnect system, where multiple users may place orders, update stock, and complete payments at the same time. I used PostgreSQL transaction controls such as `BEGIN`, `COMMIT`, `SAVEPOINT`, and `ROLLBACK`, along with row-level locking and isolation levels, to make sure order processing remains accurate even under concurrent activity.
 
-I approached this portfolio from the perspective of a live e-commerce system where multiple buyers, sellers, and staff members can act at the same time. In such an environment, the greatest risk is not software failure alone but inconsistent inventory and duplicated transaction outcomes. My design therefore emphasizes locking, transaction boundaries, and clear isolation rules so that each order is processed consistently even when concurrent activity increases during peak buying periods.
+I approached this portfolio from the perspective of a real marketplace where buyers and sellers interact at the same time. The main risk in that situation is not just system downtime but incorrect inventory updates or duplicate order outcomes when many transactions run together. That is why I focused on locking strategies, transaction boundaries, and consistent isolation rules to preserve trust in the order process during busy periods.
 
 ---
 

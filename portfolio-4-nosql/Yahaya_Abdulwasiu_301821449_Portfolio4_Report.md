@@ -8,7 +8,7 @@
 
 ## 1. Architectural Paradigms: Relational vs. NoSQL
 
-My reasoning for this portfolio was to separate the data requirements of the business by workload type. An online marketplace like ArewaConnect does not require the same database technology for every task. Transactional integrity is essential for payments and orders, while flexible product metadata and high-speed cache access are better handled using document and key-value stores. This is why I designed the solution as a hybrid system rather than forcing everything into a single database model.
+My reasoning for this portfolio was to separate the database requirements according to the actual workload of the business. An online marketplace like ArewaConnect does not need the same technology for every task. Financial transactions and order records need strong consistency, while product descriptions, media metadata, and session data can be handled more flexibly. This is why I designed the solution as a hybrid system rather than forcing every workload into one database model.
 
 | Dimension | PostgreSQL (Core RDBMS) | MongoDB (Document Store) | Redis (Key-Value Store) |
 | :--- | :--- | :--- | :--- |

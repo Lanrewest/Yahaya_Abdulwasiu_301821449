@@ -8,9 +8,9 @@
 ---
 
 ## 1. Executive Summary
-This report analyzes query execution performance on the ArewaConnect database engine. Using PostgreSQL's `EXPLAIN ANALYZE` utility, baseline execution plans were evaluated prior to optimization. Targeted composite indexes and execution plan refactoring were then applied to convert costly **Sequential Scans** into **Index / Bitmap Scans**, drastically reducing query latency.
+This report looks at how query performance was improved for the ArewaConnect platform using PostgreSQL's `EXPLAIN ANALYZE` tool. I started by examining the baseline execution plans to identify which queries were using expensive scan operations and where the database was doing extra work. After that, I applied targeted composite indexes and adjusted the query structure so the database could use more efficient execution paths instead of reading larger volumes of data than necessary.
 
-From a practical perspective, the main issue was not just query speed but workload pressure during routine reporting. In an e-commerce platform, dashboards and seller reports are generated repeatedly, and those queries often involve date filters, order status checks, and joins across transaction tables. I focused the optimization strategy on these high-frequency access patterns so the database would behave efficiently under normal business operations without sacrificing correctness.
+From a practical point of view, the biggest issue was the impact of repeated business reporting. Seller dashboards, order summaries, and recent transaction reports are usually generated often, and they frequently depend on date ranges, order status checks, and joins across transaction tables. I focused the optimization effort on these real workload patterns so the system could respond faster during daily operations while still keeping the results accurate and consistent.
 
 ---
 

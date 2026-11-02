@@ -15,7 +15,9 @@ The initial conceptual design contained flat transactions combining user data, s
 - **Update Anomaly:** Updating a customer's phone number requires updating multiple order rows.
 - **Deletion Anomaly:** Deleting an order erases product catalog details and store records.
 
-My design approach for this portfolio was to model the e-commerce system according to real business behavior rather than just theoretical normalization rules. In ArewaConnect, users, sellers, products, purchases, and deliveries are all separate operational entities, so the database must prevent repeated data and preserve historical accuracy. I therefore separated customer records, store ownership, inventory, and order transactions so that the system remains reliable as the platform grows.
+My design approach for this portfolio was to model the e-commerce system according to how the business actually operates rather than only following theoretical normalization rules. In ArewaConnect, users, sellers, products, purchases, and deliveries are different operational entities, so the database has to avoid repeated data and keep historical records accurate. I therefore separated customer records, store ownership, inventory, and order transactions so that the system remains reliable as the platform grows and more transactions are processed.
+
+I also focused on keeping the schema realistic for a marketplace where product information and delivery details can change independently from past transactions. This was important because the business needs to preserve the original order record while still allowing future updates to customer or store details without damaging previously completed sales history.
 
 ---
 
