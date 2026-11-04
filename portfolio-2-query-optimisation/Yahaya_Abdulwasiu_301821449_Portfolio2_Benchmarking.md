@@ -8,9 +8,9 @@
 ---
 
 ## 1. Executive Summary
-This report looks at how query performance was improved for the ArewaConnect platform using PostgreSQL's `EXPLAIN ANALYZE` tool. I started by examining the baseline execution plans to identify which queries were using expensive scan operations and where the database was doing extra work. After that, I applied targeted composite indexes and adjusted the query structure so the database could use more efficient execution paths instead of reading larger volumes of data than necessary.
+This report looks at how I improved query performance for the ArewaConnect platform using PostgreSQL's `EXPLAIN ANALYZE` tool. I started by checking the execution plans to identify which database paths were doing unnecessary work and which queries were scanning too much data. From there, I added targeted composite indexes and adjusted the query structure so the engine could use more efficient access paths instead of processing a much larger dataset than needed.
 
-From a practical point of view, the biggest issue was the impact of repeated business reporting. Seller dashboards, order summaries, and recent transaction reports are usually generated often, and they frequently depend on date ranges, order status checks, and joins across transaction tables. I focused the optimization effort on these real workload patterns so the system could respond faster during daily operations while still keeping the results accurate and consistent.
+The main issue in practice was the repeated load from business reporting. Seller dashboards, order summaries, and recent transaction views are often generated daily, and they usually depend on date ranges, status filters, and joins across transaction tables. I focused on those workload patterns because they reflect how the business actually uses the system, and they are the areas where performance issues become noticeable to users.
 
 ---
 

@@ -8,9 +8,9 @@
 ---
 
 ## 1. Executive Summary
-This report explains how I handled transactions and concurrency in the ArewaConnect system, where multiple users may place orders, update stock, and complete payments at the same time. I used PostgreSQL transaction controls such as `BEGIN`, `COMMIT`, `SAVEPOINT`, and `ROLLBACK`, along with row-level locking and isolation levels, to make sure order processing remains accurate even under concurrent activity.
+This report explains how I handled transactions and concurrency in the ArewaConnect system, where multiple buyers may place orders, update stock, and complete payments at the same time. I used PostgreSQL transaction controls such as `BEGIN`, `COMMIT`, `SAVEPOINT`, and `ROLLBACK`, along with row-level locking and isolation levels, to keep the order process reliable when many actions happen at once.
 
-I approached this portfolio from the perspective of a real marketplace where buyers and sellers interact at the same time. The main risk in that situation is not just system downtime but incorrect inventory updates or duplicate order outcomes when many transactions run together. That is why I focused on locking strategies, transaction boundaries, and consistent isolation rules to preserve trust in the order process during busy periods.
+I approached this task from the perspective of a live marketplace, not just a theoretical database model. The main risk in a real e-commerce platform is not only downtime but also incorrect stock deductions or duplicate order outcomes when several users act simultaneously. That is why I paid close attention to locking, transaction boundaries, and isolation rules to preserve consistency during busy sales periods.
 
 ---
 

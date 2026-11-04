@@ -6,7 +6,7 @@
 ---
 
 ## 1. Unnormalized Form (UNF)
-The initial conceptual design contained flat transactions combining user data, store attributes, products, items, payment references, and delivery states:
+The initial conceptual design combined customer details, store attributes, product information, payment references, and delivery data into a single flat transaction record:
 
 `UNF_Order = (order_number, customer_full_name, customer_email, customer_phone, store_name, product_sku, product_name, category_name, price, quantity, delivery_address, payment_ref, payment_status, delivery_tracking_code)`
 
@@ -15,9 +15,9 @@ The initial conceptual design contained flat transactions combining user data, s
 - **Update Anomaly:** Updating a customer's phone number requires updating multiple order rows.
 - **Deletion Anomaly:** Deleting an order erases product catalog details and store records.
 
-My design approach for this portfolio was to model the e-commerce system according to how the business actually operates rather than only following theoretical normalization rules. In ArewaConnect, users, sellers, products, purchases, and deliveries are different operational entities, so the database has to avoid repeated data and keep historical records accurate. I therefore separated customer records, store ownership, inventory, and order transactions so that the system remains reliable as the platform grows and more transactions are processed.
+My design approach for this portfolio was to reflect the way the business actually works rather than only following normalization theory. In ArewaConnect, users, sellers, products, purchases, and deliveries are different operational entities, so the database has to avoid duplicated data and keep historical records accurate. I separated customer information, store ownership, inventory, and order transactions so the system remains dependable as the platform grows and more sales are processed.
 
-I also focused on keeping the schema realistic for a marketplace where product information and delivery details can change independently from past transactions. This was important because the business needs to preserve the original order record while still allowing future updates to customer or store details without damaging previously completed sales history.
+I also paid attention to the fact that product and address data can change independently of a completed sale. This matters because the platform needs to preserve the original transaction record while still allowing later updates to customer or store information without affecting the historical accuracy of past orders.
 
 ---
 

@@ -11,16 +11,16 @@
 
 ## 1. Executive Summary & Case Study Overview
 
-**ArewaConnect** is a growing e-commerce platform that connects Northern Nigerian vendors, artisans, and merchants with customers across the country. As the business expands, the database has to handle larger transaction volumes, more concurrent access, and a higher demand for fast reporting during busy sales periods. This makes cloud scalability and efficient data distribution a major part of the system design.
+**ArewaConnect** is a growing e-commerce platform that connects Northern Nigerian vendors, artisans, and merchants with customers across the country. As the business grows, the system has to handle larger transaction volumes, more concurrent access, and faster reporting during peak sales periods. This makes scalability and efficient data distribution a major part of the database design.
 
-This module demonstrates the distributed and cloud database architecture I used to support ArewaConnect. The solution is based on **Neon Serverless PostgreSQL** hosted on AWS (`us-east-2`) and includes:
+This module shows the distributed and cloud architecture I used to support ArewaConnect. The solution is built around **Neon Serverless PostgreSQL** on AWS (`us-east-2`) and includes:
 - Decoupled cloud compute and storage architecture.
 - Connection pooling and scaling.
 - Active read-replication strategies.
 - Declarative range table partitioning for high-volume transactions.
 - Formal CAP theorem analysis.
 
-I chose this approach because the platform has both transactional and analytical workloads. Orders, payments, and inventory updates require consistency, but sales reporting and operational dashboards also need fast data access. A cloud-based database structure helps balance those needs without putting unnecessary pressure on one server component.
+I chose this approach because the platform has both transactional and reporting workloads. Orders, payments, and inventory updates need strong consistency, but sales dashboards and operational queries also need fast access to recent data. A cloud-based database structure helps balance those needs without making the system dependent on a single overloaded server component.
 
 ---
 
